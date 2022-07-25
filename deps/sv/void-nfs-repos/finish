@@ -2,5 +2,5 @@
 
 [ -r ./conf ] && . ./conf
 
-ln -sf /usr/share/xbps.d /etc/xbps.d
+rm -rf /etc/xbps.d
 umount ${LOCAL_MOUNT:=/mnt/repos}
