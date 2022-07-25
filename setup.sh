@@ -224,7 +224,7 @@ config_nfs_repos() {
       line_sep
     fi
 
-    print_msg info "Default repo mount point: ${local_mount:=/mnt/repos}"
+    print_msg info "Default repo mount point: ${local_mount:=/mnt/void-nfs-repos}"
     question_prompt yn "Change the repo mount point?"
     if [ $? -eq 0 ]; then
       input_prompt "Mount point:"

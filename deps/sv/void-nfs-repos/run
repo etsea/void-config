@@ -2,7 +2,7 @@
 
 [ -r ./conf ] && . ./conf
 
-[ ! -d ${LOCAL_MOUNT:=/mnt/repos} ] && mkdir $LOCAL_MOUNT
+[ ! -d ${LOCAL_MOUNT:=/mnt/void-nfs-repos} ] && mkdir $LOCAL_MOUNT
 
 if [ -d ${NFS_CONF_DIR:=/usr/local/share/xbps.nfs.d} ]; then
   ln -sf $NFS_CONF_DIR /etc/xbps.d
