@@ -3,4 +3,4 @@
 [ -r ./conf ] && . ./conf
 
 rm -rf /etc/xbps.d
-umount ${LOCAL_MOUNT:=/mnt/repos}
+umount ${LOCAL_MOUNT:=/mnt/void-nfs-repos}
