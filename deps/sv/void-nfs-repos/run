@@ -4,9 +4,6 @@
 
 [ ! -d ${LOCAL_MOUNT:=/mnt/repos} ] && mkdir $LOCAL_MOUNT
 
-[ -d ${NFS_CONF_DIR:=/usr/local/share/xbps.nfs.d} ] && \
-  ln -sf /usr/local/share/xbps.nfs.d /etc/xbps.d
-
 if [ -d ${NFS_CONF_DIR:=/usr/local/share/xbps.nfs.d} ]; then
   ln -sf $NFS_CONF_DIR /etc/xbps.d
 else
@@ -18,14 +15,13 @@ else
 
   [ $NONFREE = 'true' ] && nonfree="${repository}/nonfree"
   echo "$nonfree" > $NFS_CONF_DIR/10-repository-nonfree.conf
-
-  if [ $NONFREE != 'true' ] && [ -f $NFS_CONF_DIR/10-repository-nonfree.conf ]
-  then
-    rm -rf $NFS_CONF_DIR/10-repository-nonfree.conf
-  fi
-
-  ln -sf $NFS_CONF_DIR /etc/xbps.d
 fi
+
+if [ $NONFREE != 'true' ] && [ -f $NFS_CONF_DIR/10-repository-nonfree.conf ]; then
+  rm -rf $NFS_CONF_DIR/10-repository-nonfree.conf
+fi
+
+ln -sf $NFS_CONF_DIR /etc/xbps.d
 
 mount -t nfs ${NFS_REPO_IP:=10.20.30.2}:${NFS_REPO_DIR:=/srv/void} $LOCAL_MOUNT
 exec pause
