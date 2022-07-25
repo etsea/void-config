@@ -158,6 +158,7 @@ exit_script() {
 
 main_menu() {
   print_header "$SCRIPT_NAME" "$SCRIPT_SUBH"
+  print_subheader "Main Menu"
   question_prompt opts "Selected option:" $MAIN_OPTIONS
   case $? in
     1) config_nfs_repos;;
