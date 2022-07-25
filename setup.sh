@@ -164,7 +164,7 @@ main_menu() {
     1) config_nfs_repos;;
     2) config_shell;;
     3) config_xorg;;
-    4) exit_script;;
+    4|[Qq]*) exit_script;;
     *) error_abort "Illegal option. Aborting script.";;
   esac
 }
