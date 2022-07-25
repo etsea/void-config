@@ -10,10 +10,10 @@ if [ -d ${NFS_CONF_DIR:=/usr/local/share/xbps.nfs.d} ]; then
 else
   mkdir -p $NFS_CONF_DIR
   repository="repository=${LOCAL_MOUNT}/current"
-  [ $MUSL = 'true' ] && repository="${repository}/musl"
+  [ ${MUSL:=false} = 'true' ] && repository="${repository}/musl"
   echo "$repository" > $NFS_CONF_DIR/00-repository-main.conf
 
-  [ $NONFREE = 'true' ] && nonfree="${repository}/nonfree" && \
+  [ ${NONFREE:=false} = 'true' ] && nonfree="${repository}/nonfree" && \
     echo "$nonfree" > $NFS_CONF_DIR/10-repository-nonfree.conf
   ln -sf $NFS_CONF_DIR /etc/xbps.d
 fi
